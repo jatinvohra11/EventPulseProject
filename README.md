@@ -21,9 +21,9 @@ The project is being developed as an Android application using **Kotlin** and **
 
 ---
 
-## 🔐 Phase 1 – Authentication UI
+# 🔐 Phase 1 – Authentication UI
 
-### Student Login
+## Student Login
 
 Implemented the initial Student Login screen with:
 
@@ -41,9 +41,9 @@ Implemented the initial Student Login screen with:
 - EventPulse branding animation
 - Typing animation for the EventPulse app name
 
-### Student Registration
+## Student Registration
 
-Implemented the initial Student Registration screen with:
+Implemented the Student Registration screen with:
 
 - Full name field
 - Student email field
@@ -60,7 +60,7 @@ Implemented the initial Student Registration screen with:
 - Off-white and sky-blue theme
 - Scrollable registration form
 
-### Organizer Login
+## Organizer Login
 
 Implemented the Organizer Login screen with:
 
@@ -72,10 +72,12 @@ Implemented the Organizer Login screen with:
 - Google login option
 - Organizer registration navigation
 - Back to Student Login navigation
+- Firebase email/password login
+- Login success and error handling
 - EventPulse branding
 - Consistent off-white and sky-blue design
 
-### Organizer Registration
+## Organizer Registration
 
 Implemented the Organizer Registration screen with:
 
@@ -96,93 +98,65 @@ Implemented the Organizer Registration screen with:
 
 ---
 
-## 🔥 Phase 2 – Firebase Backend & Authentication
+# 🔥 Phase 2 – Firebase Backend & Authentication
 
-Firebase has been integrated into the EventPulse Android application as the backend foundation for authentication and future application features.
+Firebase has now been connected to the EventPulse Android application and is being used as the backend foundation for user authentication.
 
-### Firebase Project Setup
+## Firebase Project Setup
+
+Completed the initial Firebase backend integration:
 
 - Firebase project created for **EventPulse**
 - Firebase Android application registered
 - Android package name configured as:
   `com.eventpulse.app`
-- Firebase configuration file `google-services.json` added to the Android app
+- `google-services.json` added to the Android application
 - Google Services Gradle plugin configured
 - Firebase Android BoM integrated
 - Firebase Authentication SDK added
-- Firebase connected with the EventPulse Android application
+- Firebase successfully connected with the Android application
+- Internet permission configured in `AndroidManifest.xml`
 
-### Email & Password Authentication
+## 📧 Email & Password Authentication
 
-- Email/Password authentication enabled in Firebase
-- Firebase Authentication connected with the Student Login screen
-- Firebase user accounts can be managed through the Firebase Console
-- Student authentication flow prepared using Firebase Authentication
-- Password reset functionality connected with Firebase Authentication
+Email/password authentication has been successfully integrated.
 
-### Google Authentication
+### Student Authentication
 
-- Google Sign-In provider enabled in Firebase
-- Google authentication configuration initiated
-- Google Sign-In integration planned for the authentication flow
+- Student registration connected with Firebase Authentication
+- Student login connected with Firebase Authentication
+- Firebase user accounts are created successfully
+- Registered users are visible in the Firebase Console
+- Incorrect credentials are handled with user-friendly error messages
+- Authentication success state is displayed in the application
+- Forgot password functionality connected with Firebase Authentication
 
-### Firebase Authentication Structure
+### Organizer Authentication
+
+Organizer authentication has also been connected with Firebase.
+
+- Organizer registration connected with Firebase Authentication
+- Organizer login connected with Firebase Authentication
+- Organizer accounts are created successfully
+- Organizer users are visible in the Firebase Console
+- Organizer login has been tested successfully
+- Authentication success and error states are handled
+
+## 🔑 Firebase Authentication Flow
 
 ```text
 EventPulse Android App
         ↓
 Firebase Authentication
         ↓
-   User Accounts
-        ↓
-Firebase Console
-```
-
-🎨 Design Theme
-
-The current application uses a consistent:
-
-Off-White background
-Sky Blue primary color
-Clean and modern UI
-Rounded components
-Minimal design
-Smooth animations
-Student-focused visual style
-Consistent EventPulse branding
-
-The same design language will be maintained throughout the application.
-
-🛠️ Technology Stack
-Kotlin
-Android Studio
-Jetpack Compose
-Material 3
-Android SDK
-Gradle
-Firebase
-Firebase Authentication
-📱 Current Application Flow
-App Launch
-    ↓
-Student Login
-    ↓
-    ├── Email & Password Login
-    │          ↓
-    │    Firebase Authentication
-    │
-    ├── Continue with Google
-    │
-    ├── Forgot Password
-    │
-    ├── Create Student Account
-    │          ↓
-    │    Student Registration
-    │          ↓
-    │    Firebase Account
-    │
-    └── Organizer Login
-               ↓
-        Organizer Login
-               ↓
-        Organizer Registration
+ ┌───────────────┐
+ │               │
+Student       Organizer
+ │               │
+ ↓               ↓
+Login /        Login /
+Register       Register
+ │               │
+ └───────┬───────┘
+         ↓
+   Firebase Users
